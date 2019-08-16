@@ -1,0 +1,26 @@
+
+server:
+  port: 8080
+spring:
+  application:
+    name: merchant
+
+#debug服务默认5秒超时，消费者修改超时时间，生产者不变
+  cloud:
+    loadbalancer:
+      retry:
+        enabled: true
+
+hystrix:
+  command:
+    default:
+      execution:
+        isolation:
+          thread:
+            timeoutInMilliseconds: 6000
+
+ribbon:
+  ReadTimeout: 60000
+  ConnectTimeout: 60000
+#over
+
