@@ -6,10 +6,16 @@ spring:
     name: merchant
 
 #debug服务默认5秒超时，消费者修改超时时间，生产者不变
-  cloud:
-    loadbalancer:
-      retry:
-        enabled: true
+cloud:
+  loadbalancer:
+    retry:
+      #enabled: true  #true重试一次，即请求两次
+      enabled: false
+
+#feign自带断路器，默认不打开
+feign:
+  hystrix:
+    enabled: true
 
 hystrix:
   command:
@@ -22,5 +28,7 @@ hystrix:
 ribbon:
   ReadTimeout: 60000
   ConnectTimeout: 60000
+  MaxAutoRetries: 0 #最大重试次数，当Eureka中可以找到服务，但是服务连不上时将会重试
+
 #over
 

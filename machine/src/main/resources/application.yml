@@ -7,3 +7,12 @@ server:
 spring:
   application:
     name: machine
+
+#取消超时重试
+cloud:
+  loadbalancer:
+    retry:
+      enabled: false
+
+ribbon:
+  MaxAutoRetries: 0 #最大重试次数，当Eureka中可以找到服务，但是服务连不上时将会重试

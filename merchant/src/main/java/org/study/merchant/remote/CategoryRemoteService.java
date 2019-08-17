@@ -4,16 +4,17 @@ import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.study.merchant.cfg.FeignConfig;
 import org.study.merchant.remote.impl.CategoryRemoteServiceHystrix;
-import org.study.qiekj.common.dto.CategoryDto;
+import org.study.qiekj.machineapi.entity.CategoryDTO;
 
 /**
  * 类型
  * @author zenglingtao
  */
-@FeignClient(value = "machine", fallback = CategoryRemoteServiceHystrix.class)
+@FeignClient(value = "machine", fallback = CategoryRemoteServiceHystrix.class, configuration = FeignConfig.class)
 public interface CategoryRemoteService {
 
 	@RequestMapping(value = "/category/details/{code}", method = RequestMethod.GET)
-	CategoryDto details(@PathVariable("code") String code);
+	CategoryDTO details(@PathVariable("code") String code);
 }

@@ -1,4 +1,4 @@
-package org.study.qiekj.common.dto;
+package org.study.qiekj.machineapi.entity;
 
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -15,7 +15,7 @@ import java.util.Date;
 @NoArgsConstructor
 @AllArgsConstructor
 @ApiModel
-public class CategoryDto {
+public class CategoryDTO {
 	
 	@ApiModelProperty("类型id")
 	private Integer id;
